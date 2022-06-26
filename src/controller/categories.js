@@ -93,12 +93,11 @@ const PUT = (req, res, next) => {
 
     write("categories", categories);
 
-    req.body.categoryId = category.categoryId;
-    req.body.subCategories = subCategories.filter(
+    category.subCategories = subCategories.filter(
       (subCategory) => subCategory.categoryId == category.categoryId
     );
 
-    req.body.subCategories = req.body.subCategories.map((subCategory) => {
+    category.subCategories = category.subCategories.map((subCategory) => {
       delete subCategory.categoryId;
       return subCategory;
     });
@@ -106,7 +105,7 @@ const PUT = (req, res, next) => {
     res.status(200).json({
       status: 200,
       message: "category updated",
-      data: req.body,
+      data: category,
     });
   } catch (error) {
     return next(new InternalServerError(500, error.message));
