@@ -4,17 +4,5 @@
     "username": "salim",
     "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
     "email": "salim@gmail.com"
-  },
-  {
-    "username": "shrek",
-    "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
-    "email": "shrek@gmail.com",
-    "user_id": 2
-  },
-  {
-    "username": "sahrek",
-    "password": "ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f",
-    "email": "sahrek@gmail.com",
-    "user_id": 3
   }
 ]
