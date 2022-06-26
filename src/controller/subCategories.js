@@ -92,18 +92,20 @@ const PUT = (req, res, next) => {
     const { subCategoryId } = req.params;
     const { categoryId, subCategoryName } = req.body;
 
-    console.log(subCategoryId);
-
+    const categories = read("categories");
     const subCategories = read("subCategories");
     const products = read("products");
 
+    const checkCategoryId = categories.find((category) => category.categoryId == categoryId);
+    if (!checkCategoryId) return next(new AuthorizationError(401, "this category does not exist"));
+
     let subCategory = subCategories.find(
-      (subCategory) =>
-        subCategoryId == subCategory.subCategoryId && categoryId == subCategory.categoryId
+      (subCategory) => subCategoryId == subCategory.subCategoryId
     );
 
     if (!subCategory) return next(new NotFoundError(404, "category not found"));
 
+    subCategory.categoryId = categoryId || subCategory.categoryId;
     subCategory.subCategoryName = subCategoryName || subCategory.subCategoryName;
 
     write("subCategories", subCategories);

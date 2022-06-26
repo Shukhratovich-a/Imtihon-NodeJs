@@ -7,6 +7,7 @@ import { PORT, HOST } from "./config.js";
 import userRouter from "./routers/user.js";
 import categoriesRouter from "./routers/categories.js";
 import subCategoriesRouter from "./routers/subCategories.js";
+import productsRouter from "./routers/products.js";
 
 const app = express();
 app.use(express.json());
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(userRouter);
 app.use(categoriesRouter);
 app.use(subCategoriesRouter);
+app.use(productsRouter);
 
 app.use((error, req, res, next) => {
   if (error.status != 500) {
